@@ -3,4 +3,4 @@ from os import system
 
 from sqliteMan import *
 
-:
+
