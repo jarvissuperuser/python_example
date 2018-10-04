@@ -7,9 +7,44 @@ class Manager(object):
 		except:
 			self._conn = 0
 			print("No DB connection")
+	
+	def build_(self):
+		val = self.val
+		self.val = 0
+		return val
 
-	def createTable(self):
-		return "table"
+	def createTable(self,name_table,columns):
+		query = "CREATE IF NOT EXIST ".__add__(name_table)
+		query = query.__add__(" (");
+		query = query.__add__(columns);
+		return query.__add__(")")
+		
+	def column_(self,name="id"):
+		self.val = name
+		return self
+	def not_null(self):
+		self.val = self.val.__add__(" NOT NULL ")
+		return self 
+	def type(self):
+		return self
+	def int_(self):
+		self.val = self.val.__add__(" INT ")
+		return self
+	def string_(self,size_=0):
+		if (size_==0):
+			self.val = self.val.__add__(" TEXT ")
+		else:
+			self.val = self.val.__add__(" VARCHAR(")
+			self.val = self.val.__add__(str(size_))
+			self.val = self.val.__add__(")")
+		return self
+	def real_(self,):
+		self.val = self.val.__add__(" REAL ")
+		return self
+					
+	def primary_(self):
+		self.val = self.val.__add__("PRIMARY KEY")
+		return self	
 		
 	def select_(self,selection=['*'],table="",limiter="1=1"):
 		str_col = self._column_expand(selection)
