@@ -1,0 +1,19 @@
+:accountclients:
+--name:text
+--surname:text
+--idnumber:int unique
+--id:int pk ai
+
+:bank:
+--account: int unique
+--clientid: int unique fk
+--amount: real unique
+--id: int pk ai 
+
+:transactions:
+--source: text
+--actionkey
+
+:actionkey:
+--id: int
+--code:text

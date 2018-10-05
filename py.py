@@ -13,7 +13,8 @@ if __name__ == "__main__":
 		if options=="q":
 			break
 		elif (options!="clear"):
+			system("clear")
 			op.doOp(options,accounts)
 		else:
 			system("clear")
-		
+
