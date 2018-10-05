@@ -14,7 +14,7 @@ class Manager(object):
 		return val
 
 	def createTable(self,name_table,columns):
-		query = "CREATE IF NOT EXIST ".__add__(name_table)
+		query = "CREATE TABLE IF NOT EXISTS ".__add__(name_table)
 		query = query.__add__(" (");
 		query = query.__add__(columns);
 		return query.__add__(")")
@@ -66,7 +66,7 @@ class Manager(object):
 		
 	def insert(self,table,cols,vals):
 		colstr = self._column_expand(cols)
-		valstr = self._column_expand(vals)
+		valstr = self._column_expand(vals,1)
 		query = "INSERT INTO ".__add__(table)
 		query = query.__add__(" (")
 		query = query.__add__(colstr)
@@ -111,6 +111,8 @@ class Manager(object):
 		else:
 			return "'" + st + "'"
 	
-	def sql_query(_,sql_):
+	def sql_query(self,sql_):
 		cursor = self._conn.cursor()
-		return cursor.execute();	
+		return cursor.execute(sql_)
+	def getConnection(self):
+		return self._conn
