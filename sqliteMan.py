@@ -28,7 +28,7 @@ class Manager(object):
 	def type(self):
 		return self
 	def int_(self):
-		self.val = self.val.__add__(" INT ")
+		self.val = self.val.__add__(" INTEGER ")
 		return self
 	def string_(self,size_=0):
 		if (size_==0):
@@ -41,10 +41,15 @@ class Manager(object):
 	def real_(self,):
 		self.val = self.val.__add__(" REAL ")
 		return self
-					
+	def auto_increment(self):
+		self.val = self.val.__add__(" AUTOINCREMENT ")
+		return self				
 	def primary_(self):
 		self.val = self.val.__add__("PRIMARY KEY")
-		return self	
+		return self
+	def unique(self):
+		self.val = self.val.__add__("PRIMARY KEY")
+		return self
 		
 	def select_(self,selection=['*'],table="",limiter="1=1"):
 		str_col = self._column_expand(selection)
@@ -114,5 +119,7 @@ class Manager(object):
 	def sql_query(self,sql_):
 		cursor = self._conn.cursor()
 		return cursor.execute(sql_)
+	
 	def getConnection(self):
 		return self._conn
+		

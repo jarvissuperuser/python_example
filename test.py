@@ -19,10 +19,11 @@ print(qry)
 qry = man.update(table,cols,vals,"target","int_id")
 print(qry)
 columns = []
-columns.append(man.column_().int_().primary_().build_())
+columns.append(man.column_().int_().primary_().auto_increment().build_())
 columns.append(man.column_("name").string_().build_())
 columns.append(man.column_("surname").string_().build_())
 qry = man.createTable(table,",".join(columns))
+#qry += "; UPDATE sqlite_sequence SET seq = 1"
 print(qry)
 crsr = man.sql_query(qry)
 #crsr.commit()
