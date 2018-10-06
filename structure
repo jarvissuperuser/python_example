@@ -9,6 +9,7 @@
 --clientid: int fk
 --amount: real
 --accounttype: string 
+--transactionstatus: varchar(2)
 --id: int pk ai 
 
 :transactions:
