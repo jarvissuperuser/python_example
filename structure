@@ -1,18 +1,22 @@
-:accountclients:
---name:text
+:clients:
+--firstname:text
 --surname:text
---idnumber:int unique
+--idnumber:string unique
 --id:int pk ai
 
-:bank:
---account: int unique
---clientid: int unique fk
---amount: real unique
+:accounts:
+--accountnumber: int unique
+--clientid: int fk
+--amount: real
+--accounttype: string 
 --id: int pk ai 
 
 :transactions:
---source: text
---actionkey
+--reference: text
+--creference: text
+--amount: real
+--account: int
+--id: int pk ai
 
 :actionkey:
 --id: int
