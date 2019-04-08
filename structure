@@ -1,0 +1,24 @@
+:clients:
+--firstname:text
+--surname:text
+--idnumber:string unique
+--id:int pk ai
+
+:accounts:
+--accountnumber: int unique
+--clientid: int fk
+--amount: real
+--accounttype: string 
+--transactionstatus: varchar(2)
+--id: int pk ai 
+
+:transactions:
+--reference: text
+--creference: text
+--amount: real
+--account: int
+--id: int pk ai
+
+:actionkey:
+--id: int
+--code:text
